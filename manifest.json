@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "pomodoro-widget",
+	"name": "Pomodoro Widget",
 	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"minAppVersion": "1.4.16",
+	"description": "This is another pomodoro plugin for Obsidian. This plugin provides a widget based on a pomodoro kitchen timer. It's designed to be very haptic, and has a constant ticking sound, and an alarm sound that can be toggled.",
+	"author": "bitegw",
+	"authorUrl": "github.com/bitegw",
+	"fundingUrl": "",
 	"isDesktopOnly": false
 }
