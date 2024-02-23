@@ -39,10 +39,6 @@ export default class PomodoroWidgetPlugin extends Plugin {
     public widget: Widget;
     private timer: Timer;
 
-	// TODO:
-	// Add option to drag around and anchor the widget to the corners
-	// Add option for where to show the timer toggle (command only, ribbon icon, status bar)
-
     async onload() {
 		this.addSettingTab(new PomodoroWidgetSettingTab(this.app, this));
 		await this.loadSettings();
