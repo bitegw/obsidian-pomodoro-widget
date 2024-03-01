@@ -40,6 +40,17 @@ export class PomodoroWidgetSettingTab extends PluginSettingTab {
         });
 
     new Setting(containerEl)
+    .setName('Ticking enabled')
+    .addToggle(cb => {
+        cb
+            .setValue(this.plugin.settings.tickingEnabled)
+            .onChange(async (value) => {
+            this.plugin.settings.tickingEnabled = value;
+            await this.plugin.saveSettings();
+        })
+    });
+
+    new Setting(containerEl)
         .setName('Ticking volume')
         .addSlider(slider => {
             slider
@@ -55,8 +66,6 @@ export class PomodoroWidgetSettingTab extends PluginSettingTab {
         .setName('Ticking speed')
         .addDropdown(dd => {
             dd
-                .addOption('0.25','0.25')
-                .addOption('0.5','0.5')
                 .addOption('1','1')
                 .addOption('2','2')
                 .addOption('4','4')
