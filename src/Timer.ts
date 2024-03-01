@@ -12,6 +12,7 @@ export default class Timer {
 
     // Variables
     private isTicking = false;
+	private tickingEnabled: boolean;
 	private timerTimestamp : Date;
 	private timerRemainingTime: number;
 	private lastSetAmount: number;
@@ -148,7 +149,9 @@ export default class Timer {
 
     startTimer() {
         this.timerTimestamp = new Date(new Date().getTime() + new Date(this.timerRemainingTime).getTime());
-        this.tickingSound.play();
+        if(this.tickingEnabled) {
+			this.tickingSound.play();
+		}
         this.isTicking = true;
         setIcon(this.playBtn, 'pause');
         this.timerProcess = setInterval((label: HTMLElement = this.timerTime) => {
@@ -280,14 +283,22 @@ export default class Timer {
         this.alarmSound.remove();
     }
 
-	public updateSettings(options: {defaultTimerDuration?: number, tickingSpeed?: number, tickingVolume?: number, alarmVolume?: number}) {
-		if(options.defaultTimerDuration)
+	public updateSettings(options: {defaultTimerDuration?: number, tickingSpeed?: number, tickingVolume?: number, alarmVolume?: number, tickingEnabled?: boolean}) {
+		if(options.defaultTimerDuration !== undefined)
 			this.defaultTimerDuration = options.defaultTimerDuration;
-		if(options.tickingSpeed)
+		if(options.tickingSpeed !== undefined)
 			this.tickingSound.playbackRate = options.tickingSpeed * 0.5;
-		if(options.tickingVolume)
+		if(options.tickingVolume !== undefined)
 			this.tickingSound.volume = options.tickingVolume;
-		if(options.alarmVolume)
+		if(options.alarmVolume !== undefined)
 			this.alarmSound.volume = options.alarmVolume;
+		if(options.tickingEnabled !== undefined) {
+			this.tickingEnabled = options.tickingEnabled;
+			if(!options.tickingEnabled) {
+				this.tickingSound.pause();
+			} else if(this.isTicking) {
+					this.tickingSound.play();
+			}
+		}
 	}
 }

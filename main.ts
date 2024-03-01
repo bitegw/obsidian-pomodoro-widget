@@ -12,6 +12,7 @@ export enum TimerToggleLocation {
 export interface PomodoroWidgetPluginSettings {
 	defaultTimerDuration: number,
 	tickingSpeed: number,
+	tickingEnabled: boolean,
 	tickingVolume: number,
 	alarmVolume: number,
 	timerToggleLocation: TimerToggleLocation,
@@ -25,6 +26,7 @@ export interface PomodoroWidgetPluginSettings {
 export const DEFAULT_SETTINGS: Partial<PomodoroWidgetPluginSettings> = {
 	defaultTimerDuration: 25,
 	tickingSpeed: 1,
+	tickingEnabled: true,
 	tickingVolume: 1,
 	alarmVolume: 1,
 	timerToggleLocation: TimerToggleLocation.RibbonIcon,
@@ -130,6 +132,7 @@ export default class PomodoroWidgetPlugin extends Plugin {
 			tickingSpeed: this.settings.tickingSpeed,
 			tickingVolume: this.settings.tickingVolume,
 			alarmVolume: this.settings.alarmVolume,
+			tickingEnabled: this.settings.tickingEnabled,
 		});
 	}
 
